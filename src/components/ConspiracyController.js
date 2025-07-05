@@ -119,14 +119,8 @@ const ConspiracyController = () => {
   };
 
   const [elementsHolder, setElementsHolder] = useState([
-    { data: { id: 'a' } },
-    { data: { id: 'b' } },
-    { data: { id: 'c' } },
-    { data: { id: 'd' } },
-    { data: { id: 'e' } },
-    { data: { id: 'f' } },
-    { data: { id: 'g' } },
   ]);
+
   const [selectedElement, setSelectedElement] = useState("")
 
   const setingSelectedElement = (event) => {
@@ -136,10 +130,6 @@ const ConspiracyController = () => {
   const [targetSelectedElement, setTargetSelectedElement] = useState("");
 
   const [elementsLinks, setElementLinks] = useState([
-    { data: { id: 'ab', source: 'a', target: 'b' } },
-    { data: { id: 'ac', source: 'a', target: 'c' } },
-    { data: { id: 'ad', source: 'a', target: 'd' } },
-    { data: { id: 'ae', source: 'a', target: 'e' } },
   ])
 
   
