@@ -132,7 +132,20 @@ const ConspiracyController = () => {
   const [elementsLinks, setElementLinks] = useState([
   ])
 
-  
+  const add1To100 = () => {
+    var num = 1
+    while(num <= 100){
+      addNodeWithID(num)
+      num +=1
+    }
+  }
+
+  useEffect(() => {
+    // This runs once after the page loads
+    console.log('Page has loaded');
+    // You can call any function here
+    add1To100()
+  }, []); // empty array = only runs once on mount
 
   const [allElements, setAllElements] = useState([...elementsHolder, ...elementsLinks])
 
@@ -185,6 +198,11 @@ const ConspiracyController = () => {
   // Function to add a new node
   const addNode = () => {
     const newNodeId = generateUniqueId();
+    const newNode = { data: { id: newNodeId } };
+    setElementsHolder((prevElements) => [...prevElements, newNode]);
+  };
+
+  const addNodeWithID = (newNodeId) => {
     const newNode = { data: { id: newNodeId } };
     setElementsHolder((prevElements) => [...prevElements, newNode]);
   };
