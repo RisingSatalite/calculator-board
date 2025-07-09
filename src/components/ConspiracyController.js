@@ -132,9 +132,17 @@ const ConspiracyController = () => {
   const [elementsLinks, setElementLinks] = useState([
   ])
 
-  const add1To100 = () => {
+  const numbers1To100 = () => {
     var num = 1
     while(num <= 100){
+      addNodeWithID(num)
+      num +=1
+    }
+  }
+
+  const add1To100 = () => {
+    var num = 1
+    while(num <= 1000){
       addNodeWithID(num)
       num +=1
     }
