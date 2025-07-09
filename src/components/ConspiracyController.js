@@ -363,22 +363,6 @@ const ConspiracyController = () => {
       <button onClick={exportImage}>Download PNG image</button>
       <button onClick={exportSVG}>Download SVG image</button>
       <br/>
-      <span>Controller</span>
-      <button className="bg-slate-400" onClick={addNode}>Add Node</button>
-      <Select
-        class="react-select" className="react-select"
-        value={elementsHolder.find((item) => item.data.id === selectedElement)}
-        onChange={(selectedOption) => setSelectedElement(selectedOption.data.id)}
-        options={elementsHolder.map((item) => ({
-        ...item, // Spread the original item data
-        value: item.data.id,
-        label: item.data.id,
-        }))}
-          placeholder="Select a node"
-        isSearchable
-        getOptionValue={(option) => option.data.id}  // Use the original `data.id` as the value
-        getOptionLabel={(option) => option.data.id}  // Display the `data.id` as the label
-      />
       <select value={graphType} onChange={handleGraphChange}>
         <option value="" disabled>
           Choose an display layout
