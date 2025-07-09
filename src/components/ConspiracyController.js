@@ -183,14 +183,6 @@ const ConspiracyController = () => {
 
   const [allElements, setAllElements] = useState([...elementsHolder, ...elementsLinks])
 
-  const addNewElementLink = () => {
-    setElementLinks([...elementsLinks, { data: {id: selectedElement+targetSelectedElement, source: selectedElement, target: targetSelectedElement}}])
-  }
-
-  const addNewElementLinkData = (source, target) => {
-    setElementLinks([...elementsLinks, { data: {id: source+target, source: source, target: target}}])
-  }
-
   const addNewElementLinkBulk = (array) => {
     setElementLinks([...elementsLinks, ...array])
   }
