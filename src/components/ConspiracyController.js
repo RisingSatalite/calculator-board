@@ -142,7 +142,7 @@ const ConspiracyController = () => {
 
   const add1To100 = () => {
     var num = 1
-    while(num <= 1000){
+    while(num <= 150){
       addNodeWithID(num)
       num +=1
     }
@@ -395,33 +395,8 @@ const ConspiracyController = () => {
           </option>
         ))}
       </select>
+      <button onClick={digiatlSum}>Link with arrows</button>
       <button className="bg-slate-400" onClick={reverseAlignState}>Auto align{(autoAlignState==true) && (<span> On</span>)}{(autoAlignState==false) && (<span> Off</span>)}</button>
-      {selectedElement && (
-        <div>
-          <button className="bg-slate-400" onClick={deleteNode}>Delete Node</button>
-          <input
-            className="bg-stone-300"
-            value={selectedElement}
-            onChange={handleIdChange}
-          />
-          <Select
-            class="react-select" className="react-select"
-            value={elementsHolder.find((item) => item.data.id === targetSelectedElement)}
-            onChange={(selectedOption) => setTargetSelectedElement(selectedOption.data.id)}
-            options={elementsHolder.map((item) => ({
-            ...item, // Spread the original item data
-            value: item.data.id,
-            label: item.data.id,
-            }))}
-              placeholder="Select a node"
-            isSearchable
-            getOptionValue={(option) => option.data.id}  // Use the original `data.id` as the value
-            getOptionLabel={(option) => option.data.id}  // Display the `data.id` as the label
-          />
-          <button onClick={addNewElementLink}>Link</button><button onClick={removeElementLink}>Delete Links</button>
-          <button onClick={digiatlSum}>Link with arrows</button>
-        </div>
-      )}
       <ConspiracyBoard elementsHolder={allElements} graphType={graphType} style={nodeStyle} autoAlign={autoAlignState}/>
     </div>
   );
