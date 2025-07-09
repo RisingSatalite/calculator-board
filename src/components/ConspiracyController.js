@@ -140,6 +140,32 @@ const ConspiracyController = () => {
     }
   }
 
+  const digiatlSum = () => {
+    console.log(elementsHolder)
+
+    var arrowsToAdd = []
+
+    for(var number in elementsHolder){
+      var digits = [...number.toString()]
+      if(digits == 1){
+        continue
+      }
+      var newNum = 0
+      for(var digit in digits){
+        newNum += parseInt(digit)
+      }
+      if(idExists(newNum) && idExists(number)){
+        arrowsToAdd.push({ data: {id: number+newNum, source: number, target: newNum}})
+      }
+      console.log(newNum)
+      console.log(idExists(newNum))
+      console.log(number)
+      console.log(idExists(number))
+    }
+
+    addNewElementLinkBulk(arrowsToAdd)
+  }
+
   useEffect(() => {
     // This runs once after the page loads
     console.log('Page has loaded');
@@ -151,6 +177,14 @@ const ConspiracyController = () => {
 
   const addNewElementLink = () => {
     setElementLinks([...elementsLinks, { data: {id: selectedElement+targetSelectedElement, source: selectedElement, target: targetSelectedElement}}])
+  }
+
+  const addNewElementLinkData = (source, target) => {
+    setElementLinks([...elementsLinks, { data: {id: source+target, source: source, target: target}}])
+  }
+
+  const addNewElementLinkBulk = (array) => {
+    setElementLinks([...elementsLinks, ...array])
   }
 
   const removeElementLink = () => {
@@ -377,11 +411,7 @@ const ConspiracyController = () => {
             getOptionLabel={(option) => option.data.id}  // Display the `data.id` as the label
           />
           <button onClick={addNewElementLink}>Link</button><button onClick={removeElementLink}>Delete Links</button>
-          <div>
-            <span>Background image</span>
-            <input type="file" id="backgroundImageInput" name="file" onClick={(e) => setImageHolder(e.target.value)}/>
-            <button onClick={addStyle}>Set image background</button>
-          </div>
+          <button onClick={digiatlSum}>Link with arrows</button>
         </div>
       )}
       <ConspiracyBoard elementsHolder={allElements} graphType={graphType} style={nodeStyle} autoAlign={autoAlignState}/>
