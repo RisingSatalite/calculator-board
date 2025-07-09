@@ -153,22 +153,24 @@ const ConspiracyController = () => {
 
     var arrowsToAdd = []
 
-    for(var number in elementsHolder){
-      var digits = [...number.toString()]
-      if(digits == 1){
-        continue
+    for (const el of elementsHolder) {
+      const number = parseInt(el.data.id); // assuming your node has a structure like { data: { id: number } }
+
+      const digits = [...number.toString()];
+      let newNum = 0;
+      for (const digit of digits) {
+        newNum += parseInt(digit);
       }
-      var newNum = 0
-      for(var digit of digits){
-        newNum += parseInt(digit)
+
+      if (idExists(newNum) && idExists(number)) {
+        arrowsToAdd.push({
+          data: {
+            id: number + '-' + newNum,
+            source: number.toString(),
+            target: newNum.toString(),
+          },
+        });
       }
-      if(idExists(newNum) && idExists(number)){
-        arrowsToAdd.push({ data: {id: number+newNum, source: number, target: newNum}})
-      }
-      console.log(newNum)
-      console.log(idExists(newNum))
-      console.log(number)
-      console.log(idExists(number))
     }
 
     addNewElementLinkBulk(arrowsToAdd)
