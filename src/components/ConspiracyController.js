@@ -142,7 +142,7 @@ const ConspiracyController = () => {
 
   const add1To100 = () => {
     var num = 1
-    while(num <= 150){
+    while(num <= 1000){
       addNodeWithID(num)
       num +=1
     }
