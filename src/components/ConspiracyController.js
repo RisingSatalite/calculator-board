@@ -151,7 +151,7 @@ const ConspiracyController = () => {
         continue
       }
       var newNum = 0
-      for(var digit in digits){
+      for(var digit of digits){
         newNum += parseInt(digit)
       }
       if(idExists(newNum) && idExists(number)){
